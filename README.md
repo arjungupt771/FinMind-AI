@@ -776,6 +776,3 @@ The project has now reached a feature-complete portfolio stage, with the focus s
 - Data-driven decision support
 
 The project focuses on making financial data **understandable, explainable, and actionable** while keeping the underlying financial calculations deterministic.
-
----#   F i n M i n d - A I  
- 
