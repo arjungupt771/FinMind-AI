@@ -56,6 +56,7 @@ def upgrade() -> None:
     sa.Column('importance', sa.Float(), nullable=False),
     sa.Column('confidence', sa.Float(), nullable=False),
     sa.Column('active', sa.Boolean(), nullable=False),
+    sa.Column('superseded_by', sa.String(length=36), nullable=True),
     sa.Column('metadata_json', sa.JSON(), nullable=True),
     sa.Column('created_at', sa.DateTime(), nullable=False),
     sa.Column('updated_at', sa.DateTime(), nullable=False),

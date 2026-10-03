@@ -5,7 +5,7 @@ from sqlalchemy import create_engine, inspect
 from backend.database import config as database_config
 
 
-def test_initial_migration_creates_current_schema(tmp_path, monkeypatch):
+def test_initial_migration_creates_current_schema(monkeypatch):
     monkeypatch.setenv("DATABASE_URL", "sqlite:///:memory:")
 
     engine = create_engine("sqlite:///:memory:")

@@ -1,5 +1,6 @@
 import uuid
 from typing import Any, Dict, List, Optional, Tuple
+from webbrowser import get
 
 from sqlalchemy.orm import Session
 
@@ -184,7 +185,7 @@ class FinancialAdvisorService:
         # dictionaries returned by GoalIntelligence.
         cross_domain_insights = CrossDomainIntelligenceEngine().analyze(
             transactions=transaction_dicts,
-            goals=goals,
+            goals=goal_analysis.get("goals", []),
             recurring=recurring_analysis,
             forecast=getattr(
             financial_context,

@@ -1,9 +1,27 @@
+# Environment
+.env
+.venv/
+venv/
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+finmind.db
+*.db
+# Node
 node_modules/
 dist/
-.vite/
-.env
-*.db
-__pycache__/
-*.pyc
-backend/__pycache__/
-frontend/node_modules/
+
+# Chroma / local databases
+chroma_data/
+*.sqlite3
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
