@@ -86,7 +86,6 @@ elif len(configured_secret.encode("utf-8")) < 32:
     )
 else:
     JWT_SECRET_KEY = configured_secret
-    JWT_SECRET_KEY = configured_secret
 
 JWT_ALGORITHM = os.getenv("JWT_ALGORITHM", "HS256").strip().upper()
 if JWT_ALGORITHM != "HS256":
@@ -106,15 +105,6 @@ if not 1 <= ACCESS_TOKEN_EXPIRE_MINUTES <= 10080:
         "JWT_EXPIRE_MINUTES must be between 1 and 10080"
     )
 
-if (
-    ENVIRONMENT not in PRODUCTION_ENVIRONMENTS
-    and JWT_SECRET_KEY == configured_secret
-):
-    logger.warning(
-        "JWT_SECRET_KEY is not set — using an insecure default. "
-        "Set JWT_SECRET_KEY before deploying outside development."
-    )
-
 
 def hash_password(password: str) -> str:
     return pwd_context.hash(password)
@@ -126,7 +116,8 @@ def verify_password(plain_password: str, password_hash: str) -> bool:
             plain_password,
             password_hash,
         )
-    except (Exception, TypeError, ValueError):
+    except (TypeError, ValueError) as exc:
+        logger.warning("Password verification failed: %s", exc)
         return False
 
 
